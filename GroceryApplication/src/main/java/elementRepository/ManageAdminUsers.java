@@ -59,8 +59,8 @@ public class ManageAdminUsers {
 
 	public void newadminUserDetails() throws IOException {
 
-		userName.sendKeys(eu.readStringData(1, 0));
-		password.sendKeys(eu.readStringData(1, 1));
+		userName.sendKeys(ExcellUtilities.readStringData(1, 0));
+		password.sendKeys(ExcellUtilities.readStringData(1, 1));
 		gu.selectDropdownWithVisibleText(userType, "Admin");
 		saveButton.click();
 	}
@@ -73,7 +73,7 @@ public class ManageAdminUsers {
 	public String searchUsername() throws IOException {
 		searchButton.click();
 		searchUserName.clear();
-		String username = eu.readStringData(1, 0);
+		String username = ExcellUtilities.readStringData(1, 0);
 		searchUserName.sendKeys(username);
 		searchConfirmButton.click();
 		gu.scroll(driver);
