@@ -23,7 +23,7 @@
 
 				<configuration>
 					<suiteXmlFiles>
-						<suiteXmlFile>testNewTestcase.xml</suiteXmlFile>
+						<suiteXmlFile>smokeTest.xml</suiteXmlFile>
 					</suiteXmlFiles>
 				</configuration>
 			</plugin>

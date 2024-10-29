@@ -15,7 +15,7 @@ public class LoginPageTest extends BaseClass {
 	HomePage hp;
 	//SoftAssert softAssert = new SoftAssert();
 
-	@Test
+	@Test(groups="smoke")
 	public void verifyLoginWithValidData() throws IOException {
 		lp = new LoginPage(driver);
 		//hp = new HomePage(driver);
