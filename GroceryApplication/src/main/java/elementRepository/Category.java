@@ -10,17 +10,19 @@ import utilities.ExcellUtilities;
 import utilities.GeneralUtilities;
 import utilities.WaitUtilities;
 
-public class Category {
+public class Category 
+{
 	WebDriver driver;
 	ExcellUtilities eu = new ExcellUtilities();
 	GeneralUtilities gu = new GeneralUtilities();
 	WaitUtilities wu=new WaitUtilities();
 
-	public Category(WebDriver driver) {
+	public Category(WebDriver driver) 
+	{
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
-
 	}
+	
 
 	@FindBy(xpath = "//tbody//tr[1]//td[1]")
 	WebElement subCatNametoEdit;
@@ -39,18 +41,18 @@ public class Category {
 	
 
 	
-	public String readcategoryTableElement(int row, int column) {
+	public String readcategoryTableElement(int row, int column) 
+	{
 		String path = "//table[@class='table table-bordered table-hover table-sm']//tbody//tr[" + row + "]//td["
 				+ column + "]";
 		WebElement element = driver.findElement(By.xpath(path));
 		return element.getText();
 	}
-	public boolean categoryEdit() {
-
+	public boolean categoryEdit() 
+	{
 		editIcon.click();
 		category.clear();
-		category.sendKeys("Apple");
-		//gu.scroll(driver);
+		category.sendKeys("Apple");		
 		importImage.sendKeys(System.getProperty("user.dir") + "\\src\\main\\resources\\Images\\SubCatImage.jpg");
 		gu.scroll(driver);
 		wu.explicitWaitForElementtobeClickable(driver, updateButton);

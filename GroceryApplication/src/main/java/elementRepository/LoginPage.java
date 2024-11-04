@@ -9,13 +9,17 @@ import org.openqa.selenium.support.PageFactory;
 
 import utilities.ExcellUtilities;
 
-public class LoginPage {
+public class LoginPage 
+{
 	WebDriver driver;
 	ExcellUtilities eu=new ExcellUtilities();
-	public LoginPage(WebDriver driver) {
+	public LoginPage(WebDriver driver)
+	{
 		this.driver = driver;
 		PageFactory.initElements(driver, this);// to initialize page factory-static method of page factory
 	}
+	
+	
 	@FindBy(xpath = "//input[@name='username']")
 	WebElement userNameField;
 	@FindBy(xpath = "//input[@name='password']")
@@ -38,13 +42,11 @@ public String getWarningMessageText()
 return 	alertMessage.getText();
 }
 public HomePage loginToApplication() throws IOException
-{
-		
+{		
 	userNameField.sendKeys(ExcellUtilities.readStringData(0, 0));	
 	password.sendKeys(ExcellUtilities.readStringData(0, 1));
 	signinButton.click();
-	return new HomePage(driver);
-	
+	return new HomePage(driver);	
 }
 
 }

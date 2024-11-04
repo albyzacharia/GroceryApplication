@@ -1,23 +1,24 @@
 package elementRepository;
 
 import java.util.List;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-
 import utilities.GeneralUtilities;
 
-public class SubCategory {
+public class SubCategory 
+{
 	WebDriver driver;
 	GeneralUtilities gu = new GeneralUtilities();
 
-	public SubCategory(WebDriver driver) {
+	public SubCategory(WebDriver driver) 
+	{
 		this.driver = driver;
 		PageFactory.initElements(driver, this);// to initialize page factory-static method of page factory
 	}
+	
 
 	@FindBy(xpath = "//a[@class='btn btn-rounded btn-danger']")
 	WebElement newSubcategoryButton;
@@ -56,50 +57,54 @@ public class SubCategory {
 	@FindBy(xpath="//div[@class='alert alert-success alert-dismissible']")
 	WebElement subCatDeleteSuccessMsg;
 
-	public void addNewSubcategory() {
+	public void addNewSubcategory()
+	{
 		newSubcategoryButton.click();
 		gu.selectDropdownWithVisibleText(subCategoryDropdown, "Apple");
 	}
-
-	public String enterSubCategoryName() {
+	public String enterSubCategoryName()
+	{
 		String subCatName = "Pink Lady" + gu.generateCurrentDateAndTime();
 		subCategoryNameField.sendKeys(subCatName);
 		return subCatName;
 	}
-
-	public void saveSubCategory() {
-
+	public void saveSubCategory() 
+	{
 		subCategorySaveButton.click();
 	}
-
-	public void isAlertDisplayed() {
-
+	public void isAlertDisplayed()
+	{
 		subCatAlert.isDisplayed();
 	}
-
-	public String gettextalert() {
+	public String gettextalert() 
+	{
 		return subCatAlert.getText();
 	}
 
-	public String readSubcategoryTableElement(int row, int column) {
+	public String readSubcategoryTableElement(int row, int column) 
+	{
 		String path = "//table[@class='table table-bordered table-hover table-sm']//tbody//tr[" + row + "]//td["
 				+ column + "]";
 		WebElement element = driver.findElement(By.xpath(path));
 		return element.getText();
 	}
 
-	public void clickSubCategoryEditButton() {
+	public void clickSubCategoryEditButton() 
+	{
 		subCategoryEdit.click();
 	}
 
-	public String subCategoryNametoEdit() {
+	public String subCategoryNametoEdit() 
+	{
 		return subCatNametoEdit.getText();
 	}
 
-	public String categoryNametoEditCat() {
+	public String categoryNametoEditCat() 
+	{
 		return categorynameofSubCat.getText();
 	}
-	public void clearenterSubCategoryName() {
+	public void clearenterSubCategoryName() 
+	{
 		
 		subCategoryNameField.clear();
 	}
@@ -119,8 +124,7 @@ public class SubCategory {
 		subCatSearchButton.click();	
 		gu.selectDropdownWithVisibleText(searchCategory, catogoryOfSubCat);
 		searchSubCategory.sendKeys(subCatEdited);
-		searchConfirmButton.click();
-		
+		searchConfirmButton.click();		
 	}
 	public boolean resultNotFouncSearchMsg()
 	{
@@ -130,8 +134,7 @@ public class SubCategory {
 	}
 	public boolean deleteSubCategory()
 	{
-		subCategoryDeleteButton.click();
-		//driver.switchTo().alert().accept();
+		subCategoryDeleteButton.click();		
 		gu.acceptAlert(driver);
 		subCatDeleteSuccessMsg.isDisplayed();
 		boolean deleteMsg=subCatDeleteSuccessMsg.getText().contains("Sub Category Deleted Successfully");

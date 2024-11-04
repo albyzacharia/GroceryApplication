@@ -1,21 +1,21 @@
 package elementRepository;
 
 import java.io.IOException;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-
 import utilities.ExcellUtilities;
 import utilities.GeneralUtilities;
 
-public class ManageAdminUsers {
+public class ManageAdminUsers
+{
 	WebDriver driver;
 	ExcellUtilities eu = new ExcellUtilities();
 	GeneralUtilities gu = new GeneralUtilities();
 
-	public ManageAdminUsers(WebDriver driver) {
+	public ManageAdminUsers(WebDriver driver)
+	{
 		this.driver = driver;
 		PageFactory.initElements(driver, this);// to initialize page factory-static method of page factory
 	}
@@ -52,25 +52,27 @@ public class ManageAdminUsers {
 	WebElement usernameToDelete;
 	@FindBy(xpath = "//table[@class='table table-bordered table-hover table-sm']//tbody//tr[1]//td[5]//i[@class='fas fa-trash-alt']")
 	WebElement deleteUser;
+	
 
-	public void clicknewbutton() {
+	public void clicknewbutton() 
+	{
 		newButton.click();
 	}
-
-	public void newadminUserDetails() throws IOException {
-
+	public void newadminUserDetails() throws IOException 
+	{
 		userName.sendKeys(ExcellUtilities.readStringData(1, 0));
 		password.sendKeys(ExcellUtilities.readStringData(1, 1));
 		gu.selectDropdownWithVisibleText(userType, "Admin");
 		saveButton.click();
 	}
 
-	public boolean verifyalert() {
+	public boolean verifyalert() 
+	{
 		boolean al = alerforUserCreation.getText().contains("User Created Successfully");
 		return al;
 	}
-
-	public String searchUsername() throws IOException {
+	public String searchUsername() throws IOException 
+	{
 		searchButton.click();
 		searchUserName.clear();
 		String username = ExcellUtilities.readStringData(1, 0);
@@ -80,34 +82,28 @@ public class ManageAdminUsers {
 		return username;
 
 	}
-
-	public String verifyUserName() {
+	public String verifyUserName() 
+	{
 		return usersTableValue.getText();
-
 	}
-
-	public String edituser() {
+	public String edituser() 
+	{
 		editUser.click();
 		String userNameedit = gu.generateCurrentDateAndTime();
 		userName.sendKeys(userNameedit);
-
 		updateButton.click();
 		return userNameedit;
-
 	}
-
-	public boolean verifyEditconfirmMessage() {
+	public boolean verifyEditconfirmMessage()
+	{
 		boolean flag = editConfMessage.getText().contains("User Updated Successfully");
 		return flag;
-
 	}
-
-	public boolean resultNotFoundTable() {
-
+	public boolean resultNotFoundTable() 
+	{
 		boolean isdisplayed = resultNotFountTable.isDisplayed();
 		return isdisplayed;
-	}
-	
+	}	
 	public String deleteUser()
 	{
 		String delUser=usernameToDelete.getText();
@@ -121,14 +117,11 @@ public class ManageAdminUsers {
 		searchUserName.clear();
 		searchUserName.sendKeys(user);
 		searchConfirmButton.click();
-		gu.scroll(driver);
-		
+		gu.scroll(driver);		
 	}
-	public boolean verifyDeleteconfirmMessage() {
+	public boolean verifyDeleteconfirmMessage() 
+	{
 		boolean flag = editConfMessage.getText().contains("User Deleted Successfully");
 		return flag;
-
 	}
-	
-
 }

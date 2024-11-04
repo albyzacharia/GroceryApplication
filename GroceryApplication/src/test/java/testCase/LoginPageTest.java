@@ -13,34 +13,33 @@ import elementRepository.LoginPage;
 public class LoginPageTest extends BaseClass {
 	LoginPage lp;
 	HomePage hp;
-	//SoftAssert softAssert = new SoftAssert();
+	// SoftAssert softAssert = new SoftAssert();
 
-	@Test(groups="smoke")
+	@Test(groups = "smoke")
 	public void verifyLoginWithValidData() throws IOException {
-		lp = new LoginPage(driver);
-		//hp = new HomePage(driver);
-		hp=lp.loginToApplication();
+		lp = new LoginPage(driver);		
+		hp = lp.loginToApplication();
 		String actual = hp.getHomepageText();
 		String expected = "7rmart supermarket";
 		Assert.assertEquals(actual, expected, Constant.lp_verifyLoginWithValidData);
-		//softAssert.assertEquals(actual, expected, Constant.lp_verifyLoginWithValidData);
+		// softAssert.assertEquals(actual, expected,
+		// Constant.lp_verifyLoginWithValidData);
 
 	}
 
-	@Test(enabled=false, dataProvider="data-provider")
-	public void verifyLoginWithInValidData(String userName,String password) {
+	@Test(enabled = false, dataProvider = "data-provider")
+	public void verifyLoginWithInValidData(String userName, String password) {
 		lp = new LoginPage(driver);
-		lp.sendLoginDetails( userName,  password);
+		lp.sendLoginDetails(userName, password);
 		String actual = lp.getWarningMessageText();
-		String expected = "×\n"
-				+ "Alert!\n"
-				+ "Invalid Username/Password";
+		String expected = "×\n" + "Alert!\n" + "Invalid Username/Password";
 		Assert.assertEquals(actual, expected, "Alert text not as expected");
 
 	}
-	@DataProvider (name = "data-provider")
-	public Object[][] dpMethod(){
-	return new Object[][] {{"admrtin", "admin" }, {"admin", "ffg"},{"erf","ff"}};
+
+	@DataProvider(name = "data-provider")
+	public Object[][] dpMethod() {
+		return new Object[][] { { "admrtin", "admin" }, { "admin", "ffg" }, { "erf", "ff" } };
 	}
 
 }

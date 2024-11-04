@@ -1,27 +1,26 @@
 package elementRepository;
 
 import java.io.IOException;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-
 import utilities.ExcellUtilities;
 import utilities.GeneralUtilities;
 
 
-
-
-public class ManageNewsTab {
+public class ManageNewsTab
+{
 	WebDriver driver;
 	ExcellUtilities eu=new ExcellUtilities();
 	GeneralUtilities gu = new GeneralUtilities();
-	public ManageNewsTab(WebDriver driver) {
+	public ManageNewsTab(WebDriver driver) 
+	{
 		this.driver = driver;
-		PageFactory.initElements(driver, this);
-		
+		PageFactory.initElements(driver, this);		
 	}
+	
+	
 	@FindBy(xpath="//a[@class='btn btn-rounded btn-danger']")
 	WebElement newNewsTab;
 	@FindBy(id="news")
@@ -40,8 +39,7 @@ public class ManageNewsTab {
 		newsTextArea.sendKeys(ExcellUtilities.readStringData(2, 0));
 		saveNews.click();
 		boolean alert=newsAlert.getText().contains("News Created Successfully");
-		return alert;
-		
+		return alert;		
 	}
 	public boolean deleteNews() 
 	{
