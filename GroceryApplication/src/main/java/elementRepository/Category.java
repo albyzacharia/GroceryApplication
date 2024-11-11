@@ -55,7 +55,7 @@ public class Category
 		category.sendKeys("Apple");		
 		importImage.sendKeys(System.getProperty("user.dir") + "\\src\\main\\resources\\Images\\SubCatImage.jpg");
 		gu.scroll(driver);
-		wu.explicitWaitForElementtobeClickable(driver, updateButton);
+		wu.waitForElementtobeClickable(driver, updateButton);
 		updateButton.click();		
 		boolean alert=updateCatAlert.getText().contains("Category Updated Successfully");
 		return alert;

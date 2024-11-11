@@ -51,8 +51,7 @@ public class GeneralUtilities {
 	}
 
 	public int randon(int limit) {
-		Random random = new Random();
-		// int limit = 1000;
+		Random random = new Random();		
 		int randomNumber = random.nextInt(limit);
 		return randomNumber;
 	}
@@ -76,11 +75,12 @@ public class GeneralUtilities {
 		actObj.dragAndDrop(sourceDragableOne, targetBox).perform();
 	}
 
-	public void scroll(WebDriver driver) {		
+	public void scroll(WebDriver driver) {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("window.scrollBy(0,25500)");
 	}
-	public void scrollmore(WebDriver driver) {		
+
+	public void scrollmore(WebDriver driver) {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("window.scrollBy(0,10500)");
 	}

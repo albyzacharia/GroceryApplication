@@ -11,26 +11,26 @@ import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class WaitUtilities {
-	public void fluventWaitElements(WebDriver driver, WebElement element, String attribute, String attributeValue,
+	public void waitElements(WebDriver driver, WebElement element, String attribute, String attributeValue,
 			int total) {
 		Wait<WebDriver> fluentWait = new FluentWait<WebDriver>(driver).withTimeout(Duration.ofSeconds(total))
 				.pollingEvery(Duration.ofSeconds(2)).ignoring(NoSuchElementException.class);
 		fluentWait.until(ExpectedConditions.attributeContains(element, attribute, attributeValue));
 	}
-public void explicitWaitForWebElementAlert(WebDriver driver) {
+public void waitForWebElementAlert(WebDriver driver) {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
 		wait.until(ExpectedConditions.alertIsPresent());
 	}
-public void explicitWaitForWebElement(WebDriver driver,WebElement element,String atribute,String value) {
+public void waitForWebElement(WebDriver driver,WebElement element,String atribute,String value) {
 	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
 	wait.until(ExpectedConditions.attributeContains(element, atribute, value));
 }
 
-public void explicitWaitForElementtobeClickable(WebDriver driver, WebElement element) {
+public void waitForElementtobeClickable(WebDriver driver, WebElement element) {
 	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
 	wait.until(ExpectedConditions.elementToBeClickable(element));
 }
-public void explicitWaitForElementSelectionStateToBe(WebDriver driver, WebElement element) {
+public void waitForElementSelectionStateToBe(WebDriver driver, WebElement element) {
 	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
 	wait.until(ExpectedConditions.elementSelectionStateToBe(element, true));
 }

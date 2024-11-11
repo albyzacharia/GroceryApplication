@@ -15,14 +15,12 @@ import org.testng.annotations.Parameters;
 
 import utilities.ScreenShotCapture;
 
-public class BaseClass
-{
+public class BaseClass {
 	WebDriver driver;
 	ScreenShotCapture sc;
 	public static Properties pro;
 
-	public static void testBasic() throws IOException 
-	{
+	public static void testBasic() throws IOException {
 		pro = new Properties();
 		FileInputStream fp = new FileInputStream(
 				System.getProperty("user.dir") + "\\src\\test\\resources\\Properties\\Config.properties");
@@ -31,8 +29,7 @@ public class BaseClass
 
 	@BeforeMethod(alwaysRun = true)
 	@Parameters("browser")
-	public void beforeMethod(String browserName) throws IOException
-	{
+	public void beforeMethod(String browserName) throws IOException {
 		testBasic();// to get value from property file
 		if (browserName.equals("Chrome")) {
 			driver = new ChromeDriver();
